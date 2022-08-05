@@ -1,0 +1,12 @@
+{
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "files.associations": {
+    "*.j2": "yaml"
+  },
+  "yaml.customTags": [
+      "!Sub scalar",
+      "!GetAtt scalar",
+      "!Ref scalar"
+  ]
+}

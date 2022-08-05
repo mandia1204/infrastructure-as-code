@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Generating template..."
+      - python render-templates.py
+artifacts:
+  files:
+    - to-deploy.yml
+  name: iac-$(date +%Y-%m-%d-%H%M%S)

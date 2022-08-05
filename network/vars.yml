@@ -1,0 +1,29 @@
+subnet_list:
+  -
+    id: PublicSubnet01
+    ref: "Ref! PublicSubnet01"
+    type: public
+    cidrBlock: 192.168.0.0/18
+    availabilityZone: us-east-2a
+    mapPublicIpOnLaunch: true
+  -
+    id: PublicSubnet02
+    ref: "Ref! PublicSubnet02"
+    type: public
+    cidrBlock: 192.168.64.0/18
+    availabilityZone: us-east-2b
+    mapPublicIpOnLaunch: true
+  -
+    id: PrivateSubnet01
+    ref: "Ref! PrivateSubnet01"
+    type: private
+    cidrBlock: 192.168.128.0/18
+    availabilityZone: us-east-2a
+    mapPublicIpOnLaunch: false
+  -
+    id: PrivateSubnet02
+    ref: "Ref! PrivateSubnet02"
+    type: private
+    cidrBlock: 192.168.192.0/18
+    availabilityZone: us-east-2b
+    mapPublicIpOnLaunch: false
