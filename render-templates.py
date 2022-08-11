@@ -9,7 +9,8 @@ for l in vars["subnet_list"]:
 
 environment = Environment(loader=FileSystemLoader("network/"))
 network_template = environment.get_template("vpc-and-subnets.j2")
-
+subnet_dev_list = filter(lambda  s: 'env' not in s, vars["subnet_list"])
+vars['subnet_dev_list'] = list(subnet_dev_list)
 content = network_template.render(vars)
 
 filename = "to-deploy.yml"

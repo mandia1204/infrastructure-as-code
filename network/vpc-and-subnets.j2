@@ -183,6 +183,7 @@ Resources:
       GroupDescription: Cluster communication with worker nodes
       VpcId: !Ref VPC
   {% set subnetRefs = subnet_list|map(attribute='ref')|join(', ') %}
+  {% set devSubnetRefs = subnet_dev_list|map(attribute='ref')|join(', ') %}
 Outputs:
   VpcId:
     Description: The VPC Id
@@ -198,7 +199,10 @@ Outputs:
         Fn::Sub: "${AWS::StackName}-SECURITY-GROUP-ID"
   SubnetIds:
     Description: Subnets IDs in the VPC
-    Value: !Join [ ",", [ {{ subnetRefs }} ] ]
+    Value: !Join [ ",", {"Fn::If" : [ 
+      "CreateQAResources", [ {{ subnetRefs }} ], [ {{ devSubnetRefs }} ]
+      ]} 
+      ]
     Export:
       Name:
         Fn::Sub: "${AWS::StackName}-SUBNETS"
