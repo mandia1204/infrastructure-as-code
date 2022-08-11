@@ -36,7 +36,7 @@ Resources:
       MapPublicIpOnLaunch: {{ item.mapPublicIpOnLaunch }}
       Tags:
         - Key: Name
-          Value: MandiaVPC-{{ item.id }}
+          Value: !Join [ "-", [ MandiaVPC, {{ item.id }} , !Ref EnvType ] ]
         {% if item.type == "private" %}
         - Key: kubernetes.io/role/internal-elb
           Value: 1
