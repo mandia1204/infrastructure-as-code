@@ -2,6 +2,19 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   VPC with 4 subnets, 2 public and 2 private. For EKS
+Parameters:
+  EnvType:
+    Description: Environment type.
+    Default: dev
+    Type: String
+    AllowedValues:
+      - dev
+      - qa
+    ConstraintDescription: must specify dev or qa.
+Conditions:
+  CreateQAResources: !Equals 
+    - !Ref EnvType
+    - qa
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
@@ -11,7 +24,7 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: MandiaVPC
+          Value: !Join [ "-", [ MandiaVPC, !Ref EnvType ] ]
 
   {% for item in subnet_list %}
   {{ item.id }}:
