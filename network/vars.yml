@@ -8,6 +8,7 @@ subnet_list:
   -
     id: PublicSubnet02
     type: public
+    env: qa
     cidrBlock: 192.168.64.0/18
     availabilityZone: us-east-2b
     mapPublicIpOnLaunch: true
@@ -20,6 +21,7 @@ subnet_list:
   -
     id: PrivateSubnet02
     type: private
+    env: qa
     cidrBlock: 192.168.192.0/18
     availabilityZone: us-east-2b
     mapPublicIpOnLaunch: false
