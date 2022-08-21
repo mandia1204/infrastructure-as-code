@@ -25,8 +25,8 @@ Resources:
       Tags:
         - Key: Name
           Value: !Join [ "-", [ MandiaVPC, !Ref EnvType ] ]
-        - key: env
-          value: !Ref EnvType
+        - Key: env
+          Value: !Ref EnvType
 
   {% for item in subnet_list %}
   {{ item.id }}:
@@ -42,8 +42,8 @@ Resources:
       Tags:
         - Key: Name
           Value: !Join [ "-", [ MandiaVPC, {{ item.id }} , !Ref EnvType ] ]
-        - key: env
-          value: !Ref EnvType
+        - Key: env
+          Value: !Ref EnvType
         {% if item.type == "private" %}
         - Key: kubernetes.io/role/internal-elb
           Value: 1
